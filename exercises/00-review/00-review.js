@@ -1,3 +1,5 @@
+import greet from greet.js
+
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -33,6 +35,7 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
+ return Math.max(array);
 };
 
 /**
@@ -46,6 +49,7 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  return combineArray = [...array1, ...array2];
 };
 
 /**
@@ -57,6 +61,7 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  return combineObject = [...obj1, ...obj2];
 };
 
 /**
@@ -68,6 +73,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
+return doubleValues = arr.map(arr * 2);
 };
 
 /**
