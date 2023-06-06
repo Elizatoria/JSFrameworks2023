@@ -35,7 +35,7 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
- return Math.max(array);
+ return Math.max(...array);
 };
 
 /**
@@ -49,7 +49,8 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
-  return combineArray = [...array1, ...array2];
+  let newarray = [...array1, ...array2];
+  return combineArray;
 };
 
 /**
@@ -61,7 +62,8 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
-  return combineObject = [...obj1, ...obj2];
+  let newobj = [...obj1, ...obj2];
+  return combineObject;
 };
 
 /**
@@ -73,7 +75,8 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
-return doubleValues = arr.map(arr * 2);
+let newvalues = arr.map(arr * 2);
+return doubleValues;
 };
 
 /**
@@ -87,6 +90,8 @@ return doubleValues = arr.map(arr * 2);
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
+  const even = arr.filter(number => {
+    return number % 2 === 0;})
 };
 
 /**
