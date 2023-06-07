@@ -73,8 +73,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
-let newvalues = arr.map(arr * 2);
-return newvalues;
+  return arr.map((num) => num * 2);
 };
 
 /**
@@ -88,14 +87,7 @@ return newvalues;
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
-  for (let index = 0; index < arr.length; index++) {
-    const num = arr[index];
-    let newarr = 0;
-    if (num % 2 === 0) {
-      newarr.push(num); 
-      return newarr;
-    }
-  }
+  return arr.filter((arr) => arr % 2 === 0);
 };
 
 /**
@@ -118,12 +110,7 @@ const onlyEvenValues = (arr) => {
  */
 const removeVowels = (str) => {
   // Write your answer here
-  let word = string.toLowerCase()
-if(/[aeiouy]/.test(word)){
-     return true
-  } else {
-     return false
-  }
+  return str.toLowerCase().replace(/[aeiou]/g, "");
 };
 
 /**
@@ -137,10 +124,7 @@ const getIsHungryText = () => {
   let isStomachEmpty = false;
   /* convert this if else statement into a ternary expression */
 
-  let isHungry = isStomachEmpty
-    ?"Go eat something."
-    :"Keep coding!";
-
+  let isHungry = isStomachEmpty ? "Go eat something." : "Keep coding!";
   return isHungry;
 };
 
@@ -177,7 +161,7 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
-  return arr.push();
+  return arr.reduce((sum, num) => sum + num);
 };
 
 /**
@@ -194,6 +178,7 @@ const addItems = (arr) => {
 const removeDuplicates = (array) => {
   // Write your answer here
   // Return an array of unique values
+  return [...new Set(array)];
 };
 
 /**
