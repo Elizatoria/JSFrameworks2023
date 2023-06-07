@@ -138,8 +138,8 @@ const getIsHungryText = () => {
   /* convert this if else statement into a ternary expression */
 
   let isHungry = isStomachEmpty
-    ?isHungry = "Go eat something."
-    :isHungry = "Keep coding!";
+    ?"Go eat something."
+    :"Keep coding!";
 
   return isHungry;
 };
