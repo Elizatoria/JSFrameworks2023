@@ -1,4 +1,4 @@
-import greet from greet.js
+import greet from "./greet.js"
 
 /**
  * Solve this problem using ES modules (ESM).
@@ -49,8 +49,7 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
-  let newarray = [...array1, ...array2];
-  return combineArray;
+  return [...array1, ...array2];
 };
 
 /**
@@ -62,8 +61,7 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
-  let newobj = [...obj1, ...obj2];
-  return combineObject;
+  return { ...obj1, ...obj2 };
 };
 
 /**
@@ -76,7 +74,7 @@ const combineObject = (obj1, obj2) => {
 const doubleValues = (arr) => {
   // Write your answer here
 let newvalues = arr.map(arr * 2);
-return doubleValues;
+return newvalues;
 };
 
 /**
@@ -90,8 +88,14 @@ return doubleValues;
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
-  const even = arr.filter(number => {
-    return number % 2 === 0;})
+  for (let index = 0; index < arr.length; index++) {
+    const num = arr[index];
+    let newarr = 0;
+    if (num % 2 === 0) {
+      newarr.push(num); 
+      return newarr;
+    }
+  }
 };
 
 /**
@@ -114,6 +118,12 @@ const onlyEvenValues = (arr) => {
  */
 const removeVowels = (str) => {
   // Write your answer here
+  let word = string.toLowerCase()
+if(/[aeiouy]/.test(word)){
+     return true
+  } else {
+     return false
+  }
 };
 
 /**
@@ -127,12 +137,9 @@ const getIsHungryText = () => {
   let isStomachEmpty = false;
   /* convert this if else statement into a ternary expression */
 
-  // let isHungry;
-  // if (isStomachEmpty) {
-  //   isHungry = "Go eat something.";
-  // } else {
-  //   isHungry = "Keep coding!";
-  // }
+  let isHungry = isStomachEmpty
+    ?isHungry = "Go eat something."
+    :isHungry = "Keep coding!";
 
   return isHungry;
 };
@@ -170,6 +177,7 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
+  return arr.push();
 };
 
 /**

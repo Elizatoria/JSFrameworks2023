@@ -1,4 +1,4 @@
-export default greet.js
+export {greet as default};
 
 const greet = (name) => {
   return `Hello ${name}!`;
