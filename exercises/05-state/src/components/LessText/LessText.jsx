@@ -1,16 +1,43 @@
 import { useState } from "react";
 
-function LessText () {
-  const [Less] = useState(true);
-  if (Less) {
-    return <div className="container pt-4 pb-4">
-    <button className="close">More Text</button>
+const LessText = ({ text = "", maxLength }) => {
+  const [hidden, setHidden] = useState(false);
+  return (
+    <div>
+      <p>{!hidden ? text.substring(0, maxLength).trim() : text}</p>
+      <div>
+        <button
+          type="button"
+          className="btn btn-dark mr-2"
+          onClick={() => setHidden(true)}
+        >
+          Read More
+        </button>
+        <button
+          type="button"
+          className="btn btn-dark"
+          onClick={() => setHidden(false)}
+        >
+          Read Less
+        </button>
+      </div>
     </div>
-  } else
-  return <div><button className="open">Less Text</button></div>
-}
+  );
+};
+
+// function LessText () {
+//   const [Less] = useState(true);
+//   if (Less) {
+//     return <div className="container pt-4 pb-4">
+//     <button className="close">More Text</button>
+//     </div>
+//   } else
+//   return <div><button className="open">Less Text</button></div>
+// }
 
 export default LessText;
+
+
 // const commentButton = document.querySelector("#commentButton");
 //   const comments = document.querySelector("#comments");
 
