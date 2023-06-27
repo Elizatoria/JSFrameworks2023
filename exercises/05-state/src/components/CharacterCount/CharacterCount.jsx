@@ -1,14 +1,18 @@
 import { useState } from "react";
 
-export function CharacterCount() {
-  const [counts, setCounts] = useState(0);
-  const count = () => setCounts(counts + 1);
+const CharacterCount = () => {
+  const [text, setText] = useState("");
   return (
-    <div>
-      <textarea onKeydown={count}>
-        {count} CharacterCount
-      </textarea>
-    </div>
+    <>
+      <p>Records the amount of words you type!</p>
+      <textarea
+        className="form-control"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <p className="lead">Character Count: {text.length} </p>
+    </>
   );
-}
+};
 
+export default CharacterCount;
