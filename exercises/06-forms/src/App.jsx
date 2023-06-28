@@ -1,5 +1,8 @@
 import "./App.css";
 // Import here
+import { useState } from "react";
+import "countries.json";
+import "states.json";
 
 function App() {
   return (
@@ -52,7 +55,23 @@ function App() {
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        {/* Loop through the states you imported here */}
+        {/* function States() {
+        const [state, setState] = useState("");
+        value={state}
+        onChange={event => setState(event.target.value)} */}
+        function Select({ options, value, title, handleSelectChange }) {
+
+return (
+  <select name="title" value={value ? value : ''} onChange={handleSelectChange} >
+    <option value="" disabled selected hidden>{title}</option>
+    {options.map(option =>
+      <option key={option.id} value={option.id}  >
+        {option.name}
+      </option>
+    )}
+  </select>
+)
+}
         <select id="state" name="state" className="form-control" />
       </div>
 
