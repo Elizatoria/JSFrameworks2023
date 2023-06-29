@@ -1,8 +1,8 @@
 import "./App.css";
 // Import here
 import { useState } from "react";
-import "countries.json";
-import "states.json";
+import states from "./assets/states.json";
+import countries from "./assets/countries.json";
 
 function App() {
   return (
