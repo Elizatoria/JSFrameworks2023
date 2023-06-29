@@ -2,6 +2,25 @@ import { useState } from "react";
 import "./App.css";
 
 const GroceryList = () => {
+
+  const [groceryItems, setGroceryItems] = useState();
+
+  const newItem = () => {
+    setGroceryItems([...groceryItems, ""]);
+  };
+
+  const updateItem = (userInput, index) => {
+    const newGrouceryItems = [...groceryItems];
+    newGrouceryItems[index] = userInput;
+    setGroceryItems(newGrouceryItems);
+  };
+
+  const deleteItem = (index) => {
+    setGroceryItems(
+      groceryItems.filter((item, currentIndex) => currentIndex !== index)
+    );
+  };
+
   return (
     <div className="container">
       <div className="card card-body bg-light mb-2">
