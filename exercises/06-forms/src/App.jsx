@@ -5,8 +5,24 @@ import states from "./assets/states.json";
 import countries from "./assets/countries.json";
 
 function App() {
+  const [values, setValues] = useState({});
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [didSignUp, setDidSignUp] = useState(false);
+
+  const [results, setResults] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setResults(true);
+  };
+
   return (
-    <form className="container mt-4" method="POST">
+    <form className="container mt-4" method="POST" onSubmit={handleSubmit}>
       {/* You will need to handle form submission */}
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
@@ -17,6 +33,9 @@ function App() {
           name="firstName"
           type="text"
           className="form-control"
+          
+          value={values.firstName || ""}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -28,6 +47,9 @@ function App() {
           name="lastName"
           type="text"
           className="form-control"
+          
+          value={values.lastName || ""}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -39,6 +61,9 @@ function App() {
           name="addressLine1"
           type="text"
           className="form-control"
+
+          value={values.addressLine1 || ""}
+          onChange={handleChange}
         />
         <p className="help-block text-muted">
           Street Address, P.O. Box, Company Name, C/O
@@ -49,30 +74,29 @@ function App() {
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" name="city" type="text" className="form-control" />
+        <input id="city" name="city" type="text" className="form-control" 
+         value={values.city || ""}
+         onChange={handleChange}/>
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        {/* function States() {
-        const [state, setState] = useState("");
-        value={state}
-        onChange={event => setState(event.target.value)} */}
-        function Select({ options, value, title, handleSelectChange }) {
-
-return (
-  <select name="title" value={value ? value : ''} onChange={handleSelectChange} >
-    <option value="" disabled selected hidden>{title}</option>
-    {options.map(option =>
-      <option key={option.id} value={option.id}  >
-        {option.name}
-      </option>
-    )}
-  </select>
-)
-}
-        <select id="state" name="state" className="form-control" />
+        {/* Loop through the states you imported here */}
+        <select
+          id="state" name="state" className="form-control"
+          value={values.state || ""}
+          onChange={handleChange}
+        >
+          <option value=""></option>
+          {states.map((state, index) => {
+            return (
+              <option value={state} key={`state-${index}`}>
+                {state}
+              </option>
+            );
+          })}
+        </select>
       </div>
 
       <div className="mb-3">
@@ -84,6 +108,9 @@ return (
           name="postalCode"
           type="text"
           className="form-control"
+
+          value={values.postalCode || ""}
+          onChange={handleChange}
         />
       </div>
 
@@ -92,7 +119,19 @@ return (
           Country
         </label>
         {/* Loop through the countries you imported here */}
-        <select id="country" name="country" className="form-control" />
+        <select id="country" name="country" className="form-control" 
+        value={values.country || ""}
+        onChange={handleChange}>
+
+          <option value=""></option>
+          {countries.map((country, index) => {
+            return (
+              <option value={country} key={`country-${index}`}>
+                {country}
+              </option>
+            );
+          })}
+        </select>
       </div>
       <div className="mb-3 form-check">
         <input
@@ -100,6 +139,9 @@ return (
           name="signUpForNewsLetter"
           type="checkbox"
           className="form-check-input"
+
+          checked={didSignUp}
+          onChange={(e) => setDidSignUp(e.target.checked)}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter
@@ -113,12 +155,19 @@ return (
        * Find a way to only display this once the form has been submitted.
        * Hint: You will need to change "false" below with something else
        */}
-      {false && (
+     {results && (
         <div className="card card-body bg-light mt-4 mb-4">
           Results:
           <ul className="list-unstyled mb-0">
-            {/* Add <li></li> tags here */}
+            {Object.values(values).map((value, index) => {
+              return <li key={`value-${index}`}>{value}</li>;
+            })}
           </ul>
+          <p>
+            {didSignUp
+              ? "Thank you for signing up for our newsletter!"
+              : "Please sign up for our newsletter!"}
+          </p>
         </div>
       )}
     </form>
