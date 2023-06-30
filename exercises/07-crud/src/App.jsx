@@ -21,7 +21,14 @@ const GroceryList = () => {
     );
   };
 
+//   return (
+//     <div>
+//       {groceryItems.map((item, index) => {})}
+// </div>)
+
   return (
+    {groceryItems.map((item, index) => {
+    // })});
     <div className="container">
       <div className="card card-body bg-light mb-2">
         <form method="POST" className="row g-3">
@@ -31,6 +38,7 @@ const GroceryList = () => {
               type="text"
               placeholder="Name of grocery item..."
               aria-label="Name of grocery item..."
+              onChange={(e) => updateItem(e.target.value, index)}
             />
           </div>
           <div className="col">
@@ -41,10 +49,11 @@ const GroceryList = () => {
               step=".01"
               placeholder="Cost of grocery item..."
               aria-label="Cost of grocery item..."
+              onChange={(e) => updateItem(e.target.value, index)}
             />
           </div>
           <div className="col-md-auto">
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-success" onClick={newItem}>
               Add
             </button>
           </div>
@@ -80,7 +89,7 @@ const GroceryList = () => {
           <strong>Total Cost: {/* Complete me */}</strong>
         </p>
         <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-outline-success">
+          <button type="button" className="btn btn-outline-success" onClick={() => deleteItem(index)}>
             Clear
           </button>
         </div>
