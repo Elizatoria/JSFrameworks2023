@@ -83,6 +83,36 @@ const GroceryList = () => {
              *   </td>
              * </tr>
              */}
+            //  Add
+             return (
+              <div>
+                <h3>Grocery Items</h3>
+                {groceryItems.map((item, index) => {
+                  const { task } = item;
+                  return (
+                    <div key={`action-item-${index}`}>
+                      <input
+                        value={task}
+                        onChange={e => updateItem(e.target.value, index)}
+                      />
+                    </div>
+                  );
+                  //Delete
+                  return (
+                    <div>
+                      <h3>Delete Grocery ITems</h3>
+                      {groceryItems.map((item, index) => {
+                        return (
+                          <div key={`grocery-item-${index}`}>
+                            <input value={item} />
+                            <button onClick={() => deleteItem(index)}>
+                              Delete
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
           </tbody>
         </table>
         <p className="lead">
