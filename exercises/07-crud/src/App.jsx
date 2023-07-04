@@ -27,7 +27,7 @@ const GroceryList = () => {
     } else
     if (!item) {
       setItemError("Please, add Grocery Item!");
-    } else
+    }
     if (!cost) {
       setCostError("Please, add Cost of Item!");
     }
@@ -98,26 +98,16 @@ const GroceryList = () => {
             </tr>
           </thead>
           <tbody>
-            {/**
-             * Complete me. (You can use something else instead of a table if you like)
-             * @example
-             * <tr>
-             *   <td>Toilet Paper</td>
-             *   <td>$1.99</td>
-             *   <td>
-             *     <button aria-label="Delete" title="Delete" ... >
-             *       &times;
-             *     </button>
-             *   </td>
-             * </tr>
-             */}
-            {list.map((row, index) => {
+          {list.map((items, index) => {
               return (
-                <tr key={`row-${index}`}>
-                  <td>{row.item}</td>
-                  <td>${row.cost.toFixed(2)}</td>
+                <tr key={`items-${index}`}>
+                  <td>{items.name}</td>
+                  <td>${items.cost.toFixed(2)}</td>
                   <td>
-                    <button aria-label="Delete" title="Delete"
+                    <button
+                      aria-label="Delete"
+                      title="Delete"
+                      className="btn"
                       onClick={() => deleteTheThing(index)}
                     >
                       &times;
