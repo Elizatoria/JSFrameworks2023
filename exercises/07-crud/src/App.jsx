@@ -1,44 +1,39 @@
 import { useState } from "react";
-import "./App.css";
+import "./App.css"; 
 
 const GroceryList = () => {
 
-  const [groceryItems, setGroceryItems] = useState();
+  const [item, setItem] = useState("");
+  const [cost, setCost] = useState("");
 
-  const newItem = () => {
-    setGroceryItems([...groceryItems, ""]);
+  const [list, setList] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const row = { item: item, cost: cost};
+    const newList = { ...list, row};
+    setList(newList);
+  }
+
+  const totalCost = () => {
+    return list.reduce((total, row) => {
+      return total + parseFloat(item.row);
+    }, 0);
   };
-
-  const updateItem = (userInput, index) => {
-    const newGrouceryItems = [...groceryItems];
-    newGrouceryItems[index] = userInput;
-    setGroceryItems(newGrouceryItems);
-  };
-
-  const deleteItem = (index) => {
-    setGroceryItems(
-      groceryItems.filter((item, currentIndex) => currentIndex !== index)
-    );
-  };
-
-//   return (
-//     <div>
-//       {groceryItems.map((item, index) => {})}
-// </div>)
 
   return (
-    {groceryItems.map((item, index) => {
-    // })});
     <div className="container">
       <div className="card card-body bg-light mb-2">
-        <form method="POST" className="row g-3">
+        <form method="POST" className="row g-3" onSubmit={handleSubmit}>
           <div className="col">
             <input
               className="form-control"
               type="text"
               placeholder="Name of grocery item..."
               aria-label="Name of grocery item..."
-              onChange={(e) => updateItem(e.target.value, index)}
+              value={item}
+              onChange={(e) => setItem(e.target.value)}
             />
           </div>
           <div className="col">
@@ -49,7 +44,8 @@ const GroceryList = () => {
               step=".01"
               placeholder="Cost of grocery item..."
               aria-label="Cost of grocery item..."
-              onChange={(e) => updateItem(e.target.value, index)}
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
             />
           </div>
           <div className="col-md-auto">
@@ -83,40 +79,26 @@ const GroceryList = () => {
              *   </td>
              * </tr>
              */}
-            //  Add
-             return (
-              <div>
-                <h3>Grocery Items</h3>
-                {groceryItems.map((item, index) => {
-                  const { task } = item;
-                  return (
-                    <div key={`action-item-${index}`}>
-                      <input
-                        value={task}
-                        onChange={e => updateItem(e.target.value, index)}
-                      />
-                    </div>
-                  );
-                  //Delete
-                  return (
-                    <div>
-                      <h3>Delete Grocery ITems</h3>
-                      {groceryItems.map((item, index) => {
-                        return (
-                          <div key={`grocery-item-${index}`}>
-                            <input value={item} />
-                            <button onClick={() => deleteItem(index)}>
-                              Delete
-                            </button>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
+            {list.map((row, index) => {
+              return (
+                <tr key={`row-${index}`}>
+                  <td>{row.item}</td>
+                  <td>${row.cost.toFixed(2)}</td>
+                  <td>
+                    <button aria-label="Delete" title="Delete"
+                      className="btn"
+                      onClick={() => deleteFromList(index)}
+                    >
+                      &times;
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         <p className="lead">
-          <strong>Total Cost: {/* Complete me */}</strong>
+          <strong>Total Cost: ${totalCost().toFixed(2)}</strong>
         </p>
         <div className="d-flex justify-content-end">
           <button type="button" className="btn btn-outline-success" onClick={() => deleteItem(index)}>
