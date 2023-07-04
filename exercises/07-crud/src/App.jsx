@@ -8,18 +8,48 @@ const GroceryList = () => {
 
   const [list, setList] = useState([]);
 
+  const [itemError, setItemError] = useState("");
+  const [costError, setCostError] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (item) setItemError("");
+
+    if (cost) setCostError("");
+
+    if (item && cost) {
     const row = { item: item, cost: cost};
     const newList = { ...list, row};
     setList(newList);
+    setItem("");
+    setCost("");
+    } else
+    if (!item) {
+      setItemError("Please, add Grocery Item!");
+    } else
+    if (!cost) {
+      setCostError("Please, add Cost of Item!");
+    }
   }
 
   const totalCost = () => {
     return list.reduce((total, row) => {
       return total + parseFloat(item.row);
     }, 0);
+  };
+
+  const deleteTheThing = (deleteIndex) => {
+    const newList = list.filter((row, theLoopIndex) => {
+      if (theLoopIndex !== deleteIndex) {
+        return true;
+      } else return false;
+    });
+    setList([...newList]);
+  };
+
+  const clear = () => {
+    setList([]);
   };
 
   return (
@@ -35,6 +65,7 @@ const GroceryList = () => {
               value={item}
               onChange={(e) => setItem(e.target.value)}
             />
+            {itemError}
           </div>
           <div className="col">
             <input
@@ -47,9 +78,10 @@ const GroceryList = () => {
               value={cost}
               onChange={(e) => setCost(e.target.value)}
             />
+            {costError}
           </div>
           <div className="col-md-auto">
-            <button type="submit" className="btn btn-success" onClick={newItem}>
+            <button type="submit" className="btn btn-success">
               Add
             </button>
           </div>
@@ -86,8 +118,7 @@ const GroceryList = () => {
                   <td>${row.cost.toFixed(2)}</td>
                   <td>
                     <button aria-label="Delete" title="Delete"
-                      className="btn"
-                      onClick={() => deleteFromList(index)}
+                      onClick={() => deleteTheThing(index)}
                     >
                       &times;
                     </button>
@@ -101,7 +132,7 @@ const GroceryList = () => {
           <strong>Total Cost: ${totalCost().toFixed(2)}</strong>
         </p>
         <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-outline-success" onClick={() => deleteItem(index)}>
+          <button type="button" className="btn btn-outline-success" onClick={clear}>
             Clear
           </button>
         </div>
