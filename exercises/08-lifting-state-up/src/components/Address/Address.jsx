@@ -23,7 +23,7 @@ function App() {
   /**
    * You will need to pass props to <AddressResults /> and <AddressForm />
    */
-  return <>{displayResults ? <AddressResults values={values} /> : <AddressForm values={values} setValues={setValues} didSignUp={didSignUp} setDidSignUp={setDidSignUp} displayResults={displayResults} setDisplayResults={setDisplayResults} handleChange={handleChange} />}</>;
+  return <>{displayResults ? <AddressResults values={values} didSignUp={didSignUp} /> : <AddressForm values={values} setValues={setValues} didSignUp={didSignUp} setDidSignUp={setDidSignUp} displayResults={displayResults} setDisplayResults={setDisplayResults} handleChange={handleChange} />}</>;
 }
 
 export default App;

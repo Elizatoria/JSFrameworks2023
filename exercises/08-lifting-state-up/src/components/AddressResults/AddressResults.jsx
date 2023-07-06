@@ -18,6 +18,11 @@ function AddressResults(props) {
               return <li key={`value-${index}`}>{value}</li>;
             })}
       </ul>
+      <p>
+            {props.didSignUp
+              ? "Thank you for signing up for our newsletter!"
+              : "Please sign up for our newsletter!"}
+          </p>
     </div>
   );
 }
