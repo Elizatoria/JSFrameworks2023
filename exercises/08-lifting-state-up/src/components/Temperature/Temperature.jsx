@@ -28,7 +28,7 @@ function Temperature() {
       <div className="card card-body">
         <div className="mb-3">
           {/* Pass props to <TemperatureDisplay /> */}
-          <TemperatureDisplay temperature={temperature}/>
+          <TemperatureDisplay temperature={temperature} scale={scale}/>
         </div>
         {/* Pass props to <TemperatureScale /> */}
         <TemperatureScale scale={scale} setScale={setScale}/>
