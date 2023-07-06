@@ -18,6 +18,11 @@ import states from "../../assets/states";
  * - a callback function(s) for setting first name, last name, etc.
  */
 function AddressForm(props) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.setDisplayResults(true);
+  }
   /**
    * You will need to:
    * - Set the value of each <input> / <select> to something from props
@@ -25,7 +30,7 @@ function AddressForm(props) {
    * - Add an event handler to handle form submission
    */
   return (
-    <form className="container mt-4">
+    <form className="container mt-4" onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
           First Name
@@ -35,6 +40,9 @@ function AddressForm(props) {
           name="firstName"
           type="text"
           className="form-control"
+
+          value={props.values.firstName || ""}
+          onChange={props.handleChange}
         />
       </div>
       <div className="mb-3">
@@ -46,6 +54,9 @@ function AddressForm(props) {
           name="lastName"
           type="text"
           className="form-control"
+
+          value={props.values.lastName || ""}
+          onChange={props.handleChange}
         />
       </div>
       <div className="mb-3">
@@ -57,6 +68,8 @@ function AddressForm(props) {
           name="addressLine1"
           type="text"
           className="form-control"
+          value={props.values.addressLine1 || ""}
+          onChange={props.handleChange}
         />
         <p className="help-block text-muted">
           Street address, P.O. box, company name, c/o
@@ -67,14 +80,19 @@ function AddressForm(props) {
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" name="city" type="text" className="form-control" />
+        <input id="city" name="city" type="text" className="form-control" 
+        
+        value={props.values.city || ""}
+         onChange={props.handleChange} />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        <select id="state" name="state" className="form-control">
-          <option></option>
+        <select id="state" name="state" className="form-control"
+        value={props.state || ""}
+        onChange={props.handleChange}>
+          <option value=""></option>
           {states.map((state, idx) => {
             return <option key={`state-${idx}`}>{state}</option>;
           })}
@@ -90,6 +108,9 @@ function AddressForm(props) {
           name="postalCode"
           type="text"
           className="form-control"
+
+          value={props.values.postalCode || ""}
+          onChange={props.handleChange}
         />
       </div>
 
@@ -98,9 +119,9 @@ function AddressForm(props) {
           Country
         </label>
         <select id="country" name="country" className="form-control">
-          <option></option>
-          {countries.map((state, idx) => {
-            return <option key={`state-${idx}`}>{state}</option>;
+          <option value=""></option>
+          {countries.map((country, idx) => {
+            return <option key={`country-${idx}`}>{country}</option>;
           })}
         </select>
       </div>
@@ -110,6 +131,9 @@ function AddressForm(props) {
           name="confirm"
           type="checkbox"
           className="form-check-input"
+
+          checked={props.didSignUp}
+          onChange={(e) => props.setDidSignUp(e.target.checked)}
         />
         <label htmlFor="confirm" className="form-check-label">
           Sign Up For Newsletter
