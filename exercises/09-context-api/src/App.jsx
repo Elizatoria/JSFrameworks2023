@@ -1,28 +1,47 @@
 // Import what you need from React
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
+//import { useState } from "react";
 import "./App.css";
 import translations from "./assets/translations.json";
 
-/**
- * Declare createContext() here.
- */
+//Declare createContext() here.
+const LanguageContext = createContext();
 
 function App() {
   /**
    * Set state here. (See useState in "CreateAccount" below.)
    */
+  const [language, setLanguage] = useState("en");
+
+  const toggleLanguage = () => {
+    if (language === "en") {
+      setLanguage("es");
+    } else {
+      setLanguage("en");
+    }
+  };
 
   /**
    * You will need to return more than just <CreateAccount />.
    */
-  return <CreateAccount />;
+  //return <CreateAccount />;
+  return (
+    <LanguageContext.Provider value={[language, toggleLanguage]}>
+      <CreateAccount />
+    </LanguageContext.Provider>
+  );
 }
 
 function CreateAccount() {
   /**
    * You will need to replace "useState" with something else.
    */
-  const [language, setLanguage] = useState("en");
+  //const [language, setLanguage] = useState("en");
+  const [language, toggleLanguage] = useContext(LanguageContext);
+  
+  const setLanguage = (e) => {
+    toggleLanguage();
+  };
 
   /**
    * @see src/assets/translations.json
