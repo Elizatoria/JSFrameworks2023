@@ -14,10 +14,17 @@ export function TranslatorProvider({ children }) {
    */
 
   const [language, setLanguage] = useState("en");
+  const toggleLanguage = () => {
+    if (language === "en") {
+      setLanguage("es");
+    } else {
+      setLanguage("en");
+    }
+  };
 
   return (
-    <TranslatorContext.Provider value={[language, setLanguage]}>
-      <TranslatorProvider />
+    <TranslatorContext.Provider value={toggleLanguage}>
+      <div className={language}>{children}</div>
     </TranslatorContext.Provider>
   );
 }

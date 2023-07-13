@@ -1,5 +1,5 @@
 // Import what you need from React here
-import { createContext, useState } from "react";
+import { useContext } from "react";
 // You will need to import the "TranslatorContext" and "TranslatorProvider" from src/contexts/TranslatorContext.js
 import { TranslatorContext, TranslatorProvider } from "./src/contexts/TranslatorContext.js";
 
@@ -12,7 +12,7 @@ function App() {
   /**
    * Handle the Provider here
    */
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useContext(TranslatorContext);
 
   return (
     <TranslatorContext.Provider value={[language, setLanguage]}>

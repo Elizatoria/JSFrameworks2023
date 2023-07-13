@@ -1,5 +1,7 @@
 // Import what you need from React here
+import { useContext } from "react";
 // Import "TranslatorContext"
+import { TranslatorContext } from "../../contexts/TranslatorContext";
 
 function Languages() {
   /**
@@ -7,6 +9,7 @@ function Languages() {
    * @see exercises/08a-context-api/src/App.jsx
    * @see solutions/08a-context-api/App.solutions.jsx
    */
+  const [language, setLanguage] = useContext(TranslatorContext);
 
   return (
     <>
@@ -15,14 +18,14 @@ function Languages() {
        * @see exercises/08a-context-api/src/App.jsx
        * @see solutions/08a-context-api/App.solutions.jsx
        */}
-      <button type="button" className="btn btn-link btn-sm">
+      <button type="button" className="btn btn-link btn-sm" onClick={() => setLanguage(language)}>
         English
       </button>
       |
       {/**
        * Modify the button so that when it is clicked, it will change the language in state to "es".
        */}
-      <button type="button" className="btn btn-link btn-sm">
+      <button type="button" className="btn btn-link btn-sm" onClick={() => setLanguage(language)}>
         Español
       </button>
     </>
