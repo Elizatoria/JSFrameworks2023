@@ -13,20 +13,20 @@ function App() {
    */
   const [language, setLanguage] = useState("en");
 
-  const toggleLanguage = () => {
-    if (language === "en") {
-      setLanguage("es");
-    } else {
-      setLanguage("en");
-    }
-  };
+  // const toggleLanguage = () => {
+  //   if (language === "en") {
+  //     setLanguage("es");
+  //   } else {
+  //     setLanguage("en");
+  //   }
+  // };
 
   /**
    * You will need to return more than just <CreateAccount />.
    */
   //return <CreateAccount />;
   return (
-    <LanguageContext.Provider value={[language, toggleLanguage]}>
+    <LanguageContext.Provider value={[language, setLanguage]}>
       <CreateAccount />
     </LanguageContext.Provider>
   );
@@ -37,11 +37,11 @@ function CreateAccount() {
    * You will need to replace "useState" with something else.
    */
   //const [language, setLanguage] = useState("en");
-  const [language, toggleLanguage] = useContext(LanguageContext);
+  const [language, setLanguage] = useContext(LanguageContext);
   
-  const setLanguage = (e) => {
-    toggleLanguage();
-  };
+  // const setLanguage = (e) => {
+  //   toggleLanguage();
+  // };
 
   /**
    * @see src/assets/translations.json
