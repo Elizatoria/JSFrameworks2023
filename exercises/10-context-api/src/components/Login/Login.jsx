@@ -1,5 +1,4 @@
 // Import what you need from React
-import React from "react";
 import { useContext } from "react";
 
 import translations from "./LoginTranslations.json";
