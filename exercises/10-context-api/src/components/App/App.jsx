@@ -15,7 +15,7 @@ function App() {
   const [language, setLanguage] = useContext(TranslatorContext);
 
   return (
-    <TranslatorContext.Consumer value={[language, setLanguage]}>
+    <TranslatorProvider value={[language, setLanguage]}>
     <div className="App d-flex flex-column">
       <NavBar />
       <div className="container pt-4 pb-4">   
@@ -25,7 +25,7 @@ function App() {
         <Footer />
       </div>
     </div>
-    </TranslatorContext.Consumer>
+    </TranslatorProvider>
   );
 }
 
