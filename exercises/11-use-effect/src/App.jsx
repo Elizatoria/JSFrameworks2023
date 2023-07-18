@@ -9,25 +9,21 @@ function App() {
   /**
    * Set up your state
    */
-  const [quote, setQuote] = useState([]);
+  const [quote, setQuote] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState("");
+  const [hasError, setHasError] = useState(false);
 
   /**
    * Make an AJAX call with the useEffect hook
    */
   useEffect(() => {
-    setIsLoading(true);
-    axios(ronSwansonImage)
-      .then((response) => {
-        setQuote(response);
-      })
-      .catch(() => {
+    axios("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
+      .then((response) => setQuote(response.data))
+      .catch((err) => {
+        console.error(err);
         setHasError(true);
       })
-      .then(() => {
-        setIsLoading(false);
-      });
+      .then(() => setIsLoading(false));
   }, []);
 
   return (
@@ -47,16 +43,7 @@ function App() {
           class="blockquote bg-dark text-white border-0 mb-4"
         >
           {/* Complete me */}
-          {quote.map((user) => {
-        const key = `quote-${quote}`;
-        const name = `${quote}`;
-        return (
-          <div key={key}>
-            <img src={quote} alt={name} />
-            <p>{name}</p>
-          </div>
-        );
-      })}
+          {quote}
         </blockquote>
       </div>
     </body>
