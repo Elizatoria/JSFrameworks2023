@@ -15,7 +15,7 @@ function CreateAccount() {
   /**
    * Replace "en" with a constant or variable.
    */
-  const t = translations[language[0]];
+  const t = translations[language];
 
   /**
    * You do not have to change anything below this line.

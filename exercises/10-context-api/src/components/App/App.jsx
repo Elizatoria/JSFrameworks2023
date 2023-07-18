@@ -1,7 +1,7 @@
 // Import what you need from React here
-import { useContext } from "react";
+//import { useContext } from "react";
 // You will need to import the "TranslatorContext" and "TranslatorProvider" from src/contexts/TranslatorContext.js
-import { TranslatorContext, TranslatorProvider } from "./src/contexts/TranslatorContext.js";
+import { TranslatorProvider } from "../../contexts/TranslatorContext";
 
 import "./App.css";
 import NavBar from "../NavBar/NavBar";
@@ -12,10 +12,10 @@ function App() {
   /**
    * Handle the Provider here
    */
-  const [language, setLanguage] = useContext(TranslatorContext);
+  //const [language, setLanguage] = useContext(TranslatorContext);
 
   return (
-    <TranslatorProvider value={[language, setLanguage]}>
+    <TranslatorProvider>
     <div className="App d-flex flex-column">
       <NavBar />
       <div className="container pt-4 pb-4">   

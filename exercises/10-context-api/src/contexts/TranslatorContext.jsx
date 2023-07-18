@@ -14,13 +14,6 @@ export function TranslatorProvider({ children }) {
    */
 
   const [language, setLanguage] = useState("en");
-  // const toggleLanguage = () => {
-  //   if (language === "en") {
-  //     setLanguage("es");
-  //   } else {
-  //     setLanguage("en");
-  //   }
-  // };
 
   return (
     <TranslatorContext.Provider value={[language, setLanguage]}>
