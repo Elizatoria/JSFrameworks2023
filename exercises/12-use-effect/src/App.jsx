@@ -25,17 +25,26 @@ function App() {
   /**
    * Make an AJAX call with the useEffect hook
    */
-  useEffect(() => {
-    axios("https://images.dog.ceo/breeds/terrier-scottish/n02097298_7694.jpg")
-      .then((response) => setDogImages(response.data))
-  }, []);
+  const fetchDog = (numOfDogs) => {
+  
+    axios({
+      url: `https://dog.ceo/api/breeds/image/random/${dogNum}`,
+      method: "GET"
+    })
+      .then((response) => setDogImages(response.data.message))
+}
+
+useEffect(() => {
+  fetchDog(dogNum);
+}, [dogNum]);
+
 
   return (
     <div className="App">
       <h1>Dogs</h1>
       {/* Make me a controlled input */}
-      <select value={dogNum}
-          onChange={(e) => setDogNum(e.target.value)}>
+      <select
+          onChange={(e) => setDogNum(e.target.value)} value={dogNum}>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
