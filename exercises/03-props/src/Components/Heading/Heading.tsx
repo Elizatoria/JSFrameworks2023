@@ -10,7 +10,9 @@
 
 // - I should create a component called `<Heading />` that renders children props to the screen.
 // - The `<App />` component should use the `<Heading />` component to render the text "Welcome to my React App!" to the screen.
+import React from "react";
 
-export function Heading(props) {
-  return <h2>{props.children}</h2>;
-}
+interface HeadingProps  {
+  children:React.ReactNode 
+  }
+  
