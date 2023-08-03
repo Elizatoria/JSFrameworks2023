@@ -1,5 +1,5 @@
 const Welcome = ({ name = "User" }) => {
-  return <h1>Hello {name}</h1>;
+  return <>Hello {name}</>;
 };
 
 export default Welcome;
