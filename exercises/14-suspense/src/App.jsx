@@ -2,6 +2,9 @@
 import CatFact from "./CatFact";
 import "./App.css";
 
+import { Suspense } from "react";
+import ErrorBoundary from "./ErrorBoundary";
+
 function App() {
   return (
     <>
@@ -12,7 +15,11 @@ function App() {
         height={300}
       />
       {/* "CatFact" is your async component. Refactor this to use Suspense. Be sure to show loading symbols and handle errors here. */}
-      <CatFact />
+      <ErrorBoundary fallback={<div className="message">Sorry, an unexpected error occurred.</div>}>
+        <Suspense fallback={<div className="message">Loading ...</div>}>
+          <CatFact />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 }
