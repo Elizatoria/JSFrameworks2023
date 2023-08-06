@@ -1,5 +1,9 @@
-const Welcome = ({ name = "User" }) => {
-  return <>Hello {name}</>;
+type WelcomeProps = {
+  name?: string,
 };
+
+function Welcome({ name = "user" }: WelcomeProps) {
+  return <p>Welcome {name}</p>;
+}
 
 export default Welcome;
