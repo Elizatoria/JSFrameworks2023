@@ -1,12 +1,21 @@
 import "./App.css";
 // Import here
-import { useState } from "react";
-import states from "./assets/states.json";
-import countries from "./assets/countries.json";
+import { useState, ChangeEvent, FormEvent } from "react";
+import { states } from "./assets/states";
+import { countries } from "./assets/countries";
 
 function App() {
-  const [values, setValues] = useState({});
-  const handleChange = (e) => {
+  type Values = {
+    firstName?: string,
+    lastName?: string,
+    addressLine1?: string,
+    city?: string,
+    state?: string,
+    postalCode?: string,
+    country?: string,
+  }
+  const [values, setValues] = useState<Values>({});
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
@@ -16,7 +25,7 @@ function App() {
   const [didSignUp, setDidSignUp] = useState(false);
 
   const [results, setResults] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent ) => {
     e.preventDefault();
     setResults(true);
   };
