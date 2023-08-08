@@ -8,7 +8,8 @@ function CatFact() {
    * You will not need state store the fact in state anymore after refactoring App.jsx to use Suspense.
    */
   //const [fact, setFact] = useState("");
-  const fetcher = (...args) => axios(...args).then((res) => res.data.fact);
+  // const fetcher = (...args) => axios(...args).then((res) => res.data.fact);
+  const fetcher = (url: string) => axios(url).then((res) => res.data.fact);
 
   /**
    * You will display loading symbols and handle errors in the "App.jsx" component instead
