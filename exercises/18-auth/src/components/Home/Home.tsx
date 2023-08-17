@@ -1,7 +1,8 @@
 // You might need to import something from React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IMovie } from "../../types/movies";
 // import Axios (or use Fetch)
+import axios from "axios";
 
 type HomeProps = {
   token: string;
@@ -16,6 +17,28 @@ function Home({ token, logout }: HomeProps) {
    * Make an AJAX request to http://localhost:7001/api/movies to get a list of movies.
    * Be sure to provide the token in the AJAX request.
    */
+  const getMovies = async () => {
+    setErrorMessage("");
+    try {
+      const response = await axios<IMovie>(
+        "http://localhost:7001/api/movies",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMovies(response.data.data);
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Oh no! An unexpected error occurred.");
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
 
   return (
     <div className="container mt-2 mb-5">
