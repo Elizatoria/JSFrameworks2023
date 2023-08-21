@@ -44,7 +44,7 @@ function App() {
           },
           data: {
             username,
-            password,
+            password
           },
         }
       );

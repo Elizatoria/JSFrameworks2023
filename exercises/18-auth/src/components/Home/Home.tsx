@@ -29,7 +29,7 @@ function Home({ token, logout }: HomeProps) {
           },
         }
       );
-      setMovies(response.data.data);
+      setMovies(response.data);
     } catch (error) {
       console.error(error);
       setErrorMessage("Oh no! An unexpected error occurred.");
@@ -45,7 +45,7 @@ function Home({ token, logout }: HomeProps) {
       <div className="d-flex justify-content-between">
         <h1 className="h2">You are logged in!</h1>
         {/* Make this button functional */}
-        <button className="btn btn-primary">Logout</button>
+        <button className="btn btn-primary" onClick={logout}>Logout</button>
       </div>
       {movies.map((movie, idx) => {
         return (
