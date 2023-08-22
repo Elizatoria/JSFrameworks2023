@@ -18,9 +18,9 @@ function Home({ token, logout }: HomeProps) {
    * Be sure to provide the token in the AJAX request.
    */
   const getMovies = async () => {
-    setErrorMessage("");
+
     try {
-      const response = await axios<IMovie>(
+      const response = await axios(
         "http://localhost:7001/api/movies",
         {
           method: "GET",
@@ -38,14 +38,14 @@ function Home({ token, logout }: HomeProps) {
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, );
 
   return (
     <div className="container mt-2 mb-5">
       <div className="d-flex justify-content-between">
         <h1 className="h2">You are logged in!</h1>
         {/* Make this button functional */}
-        <button className="btn btn-primary" onClick={logout}>Logout</button>
+        <button className="btn btn-primary" onClick={() => logout()}>Logout</button>
       </div>
       {movies.map((movie, idx) => {
         return (

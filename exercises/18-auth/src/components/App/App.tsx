@@ -44,7 +44,7 @@ function App() {
           },
           data: {
             username,
-            password
+            password,
           },
         }
       );
@@ -60,7 +60,7 @@ function App() {
 
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         setErrorMessage("Invalid username or password");
-      } else setErrorMessage("We are sorry, unexpected error occurred.");
+      } else setErrorMessage("Login Fail");
     }
 
     setPassword("");
