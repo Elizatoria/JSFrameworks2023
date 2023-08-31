@@ -13,7 +13,7 @@ function App() {
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/checkout" element={<ShoppingCart />} />
         <Route path="/thank-you" element={<ThankYou />} />
-        {/* Redirect to the search page if no matches */}
+        {/* Redirect to the search page if no matches */} 
         <Route path="/" element={<Navigate to="/search" replace />} />
       </Routes>
     </>
