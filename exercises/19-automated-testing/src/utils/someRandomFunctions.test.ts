@@ -19,6 +19,12 @@ describe("Unit Testing", () => {
    * Write a unit test for `subtract` here.
    * @see https://jestjs.io/docs/using-matchers
    */
+  describe("subtract", () => {
+    test("should add subtract numbers", () => {
+      const result = subtract(10, 3);
+      expect(result).toBe(7);
+    });
+  });
 
   /**
    * Write two tests for `isEvenNumber` here:
@@ -26,10 +32,21 @@ describe("Unit Testing", () => {
    * - The second should test if `isEvenNumber` returns false for odd numbers
    * @see https://jestjs.io/docs/using-matchers
    */
+  describe("isEvenNumber", () => {
+    test("should return true for even numbers", () => {
+      const result = isEvenNumber(44);
+      expect(result).toBe(true);
+    });
+
+    test("should return false for odd numbers", () => {
+      const result = isEvenNumber(43);
+      expect(result).toBe(false);
+    });
+  });
 
   describe("findAdults", () => {
     // Remove the `.skip` when you are ready to write this test
-    test.skip("should find, in a multidimensional array, all the people older than 18", () => {
+    test("should find, in a multidimensional array, all the people older than 18", () => {
       /**
        * Complete the unit test for `findAdults` here.
        * Hint: You should not use `.toBe()` for this
@@ -41,10 +58,12 @@ describe("Unit Testing", () => {
         { name: "Aiden", age: 10 },
         { name: "Chloe", age: 16 },
       ];
+      const adults = findAdults(people);
+      expect(adults).toEqual([{ name: "Janet", age: 43 }]);
     });
 
     // Remove the `.skip` when you are ready to write this test
-    test.skip("should return an empty array if no adults are found", () => {
+    test("should return an empty array if no adults are found", () => {
       /**
        * Complete the unit test for `findAdults` here, where you use a different assertion than `.toBe()`
        * @see https://jestjs.io/docs/using-matchers
@@ -55,6 +74,8 @@ describe("Unit Testing", () => {
         { name: "Emma", age: 17 },
         { name: "Ethan", age: 8 },
       ];
+      const adults = findAdults(people);
+      expect(adults).toEqual([]);
     });
   });
 });
